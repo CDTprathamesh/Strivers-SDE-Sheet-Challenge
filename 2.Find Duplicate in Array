@@ -1,0 +1,11 @@
+#include <bits/stdc++.h>
+
+int findDuplicate(vector<int> &arr, int n){
+	// Write your code here
+	unordered_map<int, int>dup;
+	for(auto i: arr){
+		dup[i]++;
+		if(dup[i]>1) return i;
+	}
+	return -1;
+}
