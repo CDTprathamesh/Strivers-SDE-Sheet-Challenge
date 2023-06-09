@@ -1,0 +1,44 @@
+Iterative approch
+
+#include <bits/stdc++.h> 
+int findMinimumCoins(int amount)
+{    
+    vector<int>ans, currency = {1, 2, 5, 10, 20, 50, 100, 500, 1000};    
+    for(int i = 8; i>= 0; i--){        
+        while(amount >= currency[i]){            
+            amount -= currency[i];            
+            ans.push_back(currency[i]);        
+        }    
+    }    
+            return ans.size();
+}
+
+
+Using DP
+// #include <bits/stdc++.h> 
+//  int solveDp(vector<int>coins, int amount, vector<int>dp){
+//     if (amount == 0) return 0;
+//     if (amount < 0) return INT_MAX;
+//     if (dp[amount] != -1) return dp[amount];
+//     int mini = INT_MAX;
+//     for (int i = 0; i < coins.size(); i++) {
+//         if (amount >= coins[i]) {
+//             int ans = solveDp(coins, amount - coins[i], dp);
+//             if (ans != INT_MAX) {
+//                 mini = std::min(mini, ans + 1);
+//             }
+//         }
+//     }
+//     dp[amount] = mini;
+//     return dp[amount];
+// }
+// int findMinimumCoins(int amount) 
+// {
+//     vector<int>v ={1,2,5,10, 20, 50, 100, 500, 1000};
+//     vector<int>dp(amount+1,-1);
+//     int ans = solveDp(v,amount,dp);
+//     if(ans == INT_MAX) return -1;
+//     else return ans;
+//     return ans;
+    
+// }
