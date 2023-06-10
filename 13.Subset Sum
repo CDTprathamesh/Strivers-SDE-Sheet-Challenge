@@ -1,0 +1,45 @@
+#include <bits/stdc++.h> 
+
+
+//    vector<int>sumsubset(vector<int> &num, int i, vector<int>&output, vector<int>ans){
+       // base case
+    //    if (i >= num.size()) {
+    //     int sum = 0;
+    //     for (int j = 0; j < output.size(); j++) {
+    //         sum += output[j];
+    //     }
+    //     ans.push_back(sum);
+    //     return ans;
+    // }
+    //    //exc;ude
+    //    sumsubset(num,i+1, output,ans);
+    //    output.push_back(num[i]);
+    //    sumsubset(num,i+1, output,ans);
+
+    //    return ans;
+
+//    }
+
+
+void sumsubset(int i, int sum, vector<int>&arr, vector<int>&ans){
+    //base case
+    if(i >= arr.size()){
+        ans.push_back(sum);
+        return;
+    }
+    //include
+    sumsubset(i+1, sum+arr[i], arr, ans);
+    //exxclude
+    sumsubset(i+1, sum, arr,ans);
+
+}
+vector<int> subsetSum(vector<int> &num)
+{
+    // Write your code here.
+    int i = 0;
+    // vector<int> output;
+    vector<int> ans;
+    sumsubset(i, 0,num, ans);
+    sort(ans.begin(), ans.end());
+    return ans;
+}
