@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+
+
+int usingRec(string& a, string&b, int i, int j, vector<vector<int>>& dp){
+	//base case
+	if(i==a.length()) return 0;
+	if(j==b.length()) return 0;
+	int ans=0;
+    if(dp[i][j]!=-1) return dp[i][j];
+	if(a[i]==b[j]){
+		ans= 1+ usingRec(a,b,i+1,j+1,dp);
+	}
+	else{
+		ans= 0+ max(usingRec(a,b,i+1,j,dp), usingRec(a,b,i,j+1,dp));
+	}
+    dp[i][j]=ans;
+return dp[i][j];
+}
+int lcs(string s, string t)
+{
+	//Write your code here
+	//step1:: create dp array
+	vector<vector<int>>dp(s.length(), vector<int>(t.length(),-1));
+	return usingRec(s,t,0,0,dp);
+
+
+}
