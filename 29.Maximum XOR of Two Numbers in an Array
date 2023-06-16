@@ -1,0 +1,15 @@
+#include <bits/stdc++.h> 
+int maximumXor(vector<int> v)
+{
+    // Write your code here.  
+    int n=v.size(); 
+    int maxi=INT_MIN;
+    if(n==1) return 0;
+    for(int i=0; i<n-1; i++){
+        for(int j=i+1; j<n;j++){
+            int a= v[i]^v[j];
+            maxi=max(maxi,a);
+        }
+    }
+    return maxi;
+}
